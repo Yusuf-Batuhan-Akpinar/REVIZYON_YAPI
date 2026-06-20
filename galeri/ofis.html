@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ofis - REVİZYON YAPI</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-detail">
+            <a href="../index.html" class="navbar-brand">
+                <h1><i class="fas fa-building"></i> REVİZYON YAPI</h1>
+            </a>
+            <a href="../index.html#gallery" class="back-btn"><i class="fas fa-arrow-left"></i> Galeriye Dön</a>
+        </div>
+    </nav>
+
+    <section class="gallery-detail-section">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-briefcase"></i> Ofis</h2>
+            <p class="photo-count">7 fotoğraf</p>
+            <div class="gallery-detail-grid">
+                <div class="detail-item" data-index="0"><img src="../images/ofis/1.jpeg" alt="Ofis 1" loading="lazy"></div>
+                <div class="detail-item" data-index="1"><img src="../images/ofis/2.jpeg" alt="Ofis 2" loading="lazy"></div>
+                <div class="detail-item" data-index="2"><img src="../images/ofis/3.jpeg" alt="Ofis 3" loading="lazy"></div>
+                <div class="detail-item" data-index="3"><img src="../images/ofis/4.jpeg" alt="Ofis 4" loading="lazy"></div>
+                <div class="detail-item" data-index="4"><img src="../images/ofis/5.jpeg" alt="Ofis 5" loading="lazy"></div>
+                <div class="detail-item" data-index="5"><img src="../images/ofis/6.jpeg" alt="Ofis 6" loading="lazy"></div>
+                <div class="detail-item" data-index="6"><img src="../images/ofis/7.jpeg" alt="Ofis 7" loading="lazy"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
+        <button class="lightbox-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></button>
+        <button class="lightbox-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></button>
+        <div class="lightbox-content">
+            <img id="lightboxImg" src="" alt="">
+            <p id="lightboxCaption"></p>
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
+</body>
+</html>
