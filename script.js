@@ -21,6 +21,16 @@ function currentSlide(n) {
     startCarouselAutoplay();
 }
 
+function loadSlideImage(index) {
+    const slides = document.querySelectorAll('.carousel-slide');
+    if (!slides[index]) return;
+    const img = slides[index].querySelector('img[data-src]');
+    if (img) {
+        img.src = img.dataset.src;
+        img.removeAttribute('data-src');
+    }
+}
+
 function showSlide(n) {
     const slides = document.querySelectorAll('.carousel-slide');
     const indicators = document.querySelectorAll('.indicator');
@@ -31,6 +41,12 @@ function showSlide(n) {
     if (n < 1) {
         currentSlideIndex = slides.length;
     }
+
+    // Aktif slide'ı yükle
+    loadSlideImage(currentSlideIndex - 1);
+    // Bir sonrakini de önceden hazırla
+    const nextIndex = currentSlideIndex >= slides.length ? 0 : currentSlideIndex;
+    loadSlideImage(nextIndex);
 
     slides.forEach(slide => slide.classList.remove('active'));
     indicators.forEach(indicator => indicator.classList.remove('active'));
