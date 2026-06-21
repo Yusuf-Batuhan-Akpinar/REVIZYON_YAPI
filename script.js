@@ -281,6 +281,7 @@ if (document.readyState === 'loading') {
         initializeSmoothScroll();
         initializeCarousel();
         attachCarouselEventListeners();
+        initializeContactForm();
     });
 } else {
     initializeHamburger();
@@ -289,4 +290,45 @@ if (document.readyState === 'loading') {
     initializeSmoothScroll();
     initializeCarousel();
     attachCarouselEventListeners();
+    initializeContactForm();
+}
+
+// AJAX İLETİŞİM FORMU
+function initializeContactForm() {
+    const form = document.getElementById('contactForm');
+    if (!form) return;
+
+    form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const btn = form.querySelector('.submit-btn');
+        const msgDiv = document.getElementById('formMessage');
+
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Gönderiliyor...';
+        msgDiv.className = 'form-message';
+        msgDiv.textContent = '';
+
+        try {
+            const response = await fetch('https://formspree.io/f/mrewzply', {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (response.ok) {
+                msgDiv.className = 'form-message success';
+                msgDiv.textContent = '✓ Mesajınız iletildi! En kısa sürede size dönüş yapacağız.';
+                form.reset();
+            } else {
+                throw new Error('Sunucu hatası');
+            }
+        } catch {
+            msgDiv.className = 'form-message error';
+            msgDiv.textContent = '✗ Bir hata oluştu. Lütfen WhatsApp\'tan veya telefonla ulaşın.';
+        } finally {
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fas fa-paper-plane"></i> Gönder';
+        }
+    });
 }
